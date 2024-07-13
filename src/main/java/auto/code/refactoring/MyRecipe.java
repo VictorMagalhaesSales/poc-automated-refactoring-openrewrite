@@ -23,7 +23,11 @@ public class MyRecipe extends Recipe {
 		return new JavaIsoVisitor<>() {
 			@Override
 			public J.MethodDeclaration visitMethodDeclaration(J.MethodDeclaration method, ExecutionContext p) {
-				System.out.println(method.getSimpleName());
+				if(method.getSimpleName().equals("methodToBeModified")) {
+					return method.withName(method.getName().withSimpleName("modifiedMethod"));
+				}
+				
+				
 				return super.visitMethodDeclaration(method, p);
 			};
 		};
