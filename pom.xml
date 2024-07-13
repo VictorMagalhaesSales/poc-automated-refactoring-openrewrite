@@ -14,16 +14,94 @@
 	<name>Auto code refactoring with OpenRewrite</name>
 	  
 	<dependencies>
+		<!-- spring -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 		
+		<!-- openrewrite -->
+		<dependency>
+		    <groupId>org.openrewrite</groupId>
+		    <artifactId>rewrite-java</artifactId>
+        	<scope>compile</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.openrewrite</groupId>
+		    <artifactId>rewrite-maven</artifactId>
+        	<scope>compile</scope>
+		</dependency>
+	    <dependency>
+	        <groupId>org.openrewrite</groupId>
+	        <artifactId>rewrite-xml</artifactId>
+	        <scope>compile</scope>
+	    </dependency>
+		
+		<!-- tests -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	<dependencyManagement>
+	  <dependencies>
+	      <dependency>
+	          <groupId>org.openrewrite.recipe</groupId>
+	          <artifactId>rewrite-recipe-bom</artifactId>
+	          <version>2.13.2</version>
+	          <type>pom</type>
+	          <scope>import</scope>
+	      </dependency>
+	  </dependencies>
+	</dependencyManagement>
+	
+	<build>
+		<plugins>
+			<plugin>
+		        <groupId>org.openrewrite.maven</groupId>
+		        <artifactId>rewrite-maven-plugin</artifactId>
+		        <version>5.35.0</version>
+		        <configuration>
+					<exportDatatables>true</exportDatatables>
+		          
+		          	<activeRecipes>
+			            <!--
+			            <recipe>com.yourorg.ChangeSpringPropertyKeyExample</recipe>
+			            <recipe>org.openrewrite.java.spring.SeparateApplicationYamlByProfile</recipe>
+			           	<recipe>org.openrewrite.java.spring.boot3.SpringBoot3BestPractices</recipe>
+			           	-->
+			           	
+			             <!-- SEARCHS
+			            <recipe>org.openrewrite.java.spring.search.FindApiEndpoints</recipe>
+			            <recipe>org.openrewrite.java.spring.search.FindApiCalls</recipe>
+			            <recipe>org.openrewrite.java.spring.search.FindSpringComponents</recipe>-->
+			            
+			           	<recipe>auto.code.refactoring.MyRecipe</recipe>
+		          	</activeRecipes>
+		        </configuration>
+		        
+		        <dependencies>
+					<dependency>
+						<groupId>auto.code.refactoring</groupId>
+						<artifactId>code-refactoring-openrewrite</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+					</dependency>
+		          	<dependency>
+			            <groupId>org.openrewrite.recipe</groupId>
+			            <artifactId>rewrite-spring</artifactId>
+			            <version>5.14.0</version>
+		          	</dependency>
+		          	<dependency>
+			            <groupId>org.openrewrite.recipe</groupId>
+			            <artifactId>rewrite-sql</artifactId>
+			            <version>1.7.0</version>
+			          	</dependency>
+		        </dependencies>
+		        
+		    </plugin>
+	    </plugins>
+    </build>
   
 </project>
