@@ -15,7 +15,7 @@ public class MyRecipe extends Recipe {
 
 	@Override
 	public String getDescription() {
-		return "Recipe built for studies";
+		return "Recipe built for studies.";
 	}
 
 	@Override

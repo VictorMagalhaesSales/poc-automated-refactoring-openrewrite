@@ -23,7 +23,7 @@
 		<!-- openrewrite -->
 		<dependency>
 		    <groupId>org.openrewrite</groupId>
-		    <artifactId>rewrite-java</artifactId>
+		    <artifactId>rewrite-java-17</artifactId>
         	<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -42,6 +42,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.openrewrite</groupId>
+		    <artifactId>rewrite-test</artifactId>
+        	<scope>test</scope>
 		</dependency>
 	</dependencies>
 	
