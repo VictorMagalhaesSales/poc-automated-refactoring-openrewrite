@@ -19,11 +19,18 @@ public class MyRecipeTest implements RewriteTest {
 		rewriteRun(
 			java("""
 				public class FooBar {
+
+					private String firstVariable = "First";
+					private String secondVariable = "Second";
 					
-					void helloWorld() {
+					String helloWorld() {
 						System.out.println("Hello World!");
+						return "Hello World!";
 					}
-				
+					
+					void methodToBeModified(String arg1) {
+						System.out.println("This method will be changed...");
+					}				
 				}
 			""")
 		);

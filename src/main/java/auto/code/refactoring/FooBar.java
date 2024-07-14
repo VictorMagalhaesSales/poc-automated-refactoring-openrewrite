@@ -1,6 +1,9 @@
 package auto.code.refactoring;
 
 public class FooBar {
+
+	private String firstVariable = "First";
+	private String secondVariable = "Second";
 	
 	String helloWorld() {
 		System.out.println("Hello World!");
