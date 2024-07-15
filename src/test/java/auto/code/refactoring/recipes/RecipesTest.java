@@ -11,7 +11,7 @@ public class RecipesTest implements RewriteTest {
 	
 	@Override
 	public void defaults(RecipeSpec spec) {
-		spec.recipe(new AnalysisRecipe());
+		spec.recipes(new AnalysisRecipe(), new RefactorRecipe());
 	}
 	
 	@Test
@@ -31,6 +31,20 @@ public class RecipesTest implements RewriteTest {
 					void methodToBeModified(String arg1) {
 						System.out.println("This method will be changed...");
 					}				
+				}
+				
+				
+				public class SecondClass extends org.openrewrite.Recipe {
+
+					@Override
+					public String getDisplayName() {
+						return "Analysis Recipe";
+					}
+				
+					@Override
+					public String getDescription() {
+						return "Recipe built for analysis operations";
+					}			
 				}
 			""")
 		);

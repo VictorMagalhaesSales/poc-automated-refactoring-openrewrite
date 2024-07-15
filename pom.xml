@@ -17,8 +17,8 @@
 	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	    <maven.compiler.source>1.8</maven.compiler.source>
 	    <maven.compiler.target>1.8</maven.compiler.target>
-	    <maven.compiler.testSource>17</maven.compiler.testSource>
-	    <maven.compiler.testTarget>17</maven.compiler.testTarget>
+	    <maven.compiler.testSource>21</maven.compiler.testSource>
+	    <maven.compiler.testTarget>21</maven.compiler.testTarget>
 	</properties>	
 	
 	<dependencyManagement>
@@ -43,7 +43,7 @@
 		<!-- openrewrite -->
 		<dependency>
 		    <groupId>org.openrewrite</groupId>
-		    <artifactId>rewrite-java-17</artifactId>
+		    <artifactId>rewrite-java-21</artifactId>
         	<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -91,7 +91,8 @@
 			            <recipe>org.openrewrite.java.spring.search.FindApiCalls</recipe>
 			            <recipe>org.openrewrite.java.spring.search.FindSpringComponents</recipe>-->
 			            
-			           	<recipe>auto.code.refactoring.MyRecipe</recipe>
+			           	<recipe>auto.code.refactoring.recipes.AnalysisRecipe</recipe>
+			           	<recipe>auto.code.refactoring.recipes.RefactorRecipe</recipe>
 		          	</activeRecipes>
 		        </configuration>
 		        

@@ -10,8 +10,9 @@ public class FooBar {
 		return "Hello World!";
 	}
 	
-	void methodToBeModified() {
+	void modifiedMethod() {
 		System.out.println("This method will be changed...");
+		System.out.println("Vars: %s, %s".formatted(firstVariable, secondVariable));
 	}
 
 }
