@@ -96,8 +96,9 @@
 			            <recipe>org.openrewrite.java.spring.search.FindSpringComponents</recipe>-->
 			            
 			           	<!-- <recipe>auto.code.refactoring.recipes.AnalysisRecipe</recipe>
-			           	<recipe>auto.code.refactoring.recipes.RefactorRecipe</recipe>-->
-			           	<recipe>auto.code.refactoring.recipes.FastReplacementRecipe</recipe>
+			           	<recipe>auto.code.refactoring.recipes.RefactorRecipe</recipe>
+			           	<recipe>auto.code.refactoring.recipes.FastReplacementRecipe</recipe>-->
+			           	<recipe>auto.code.refactoring.recipes.ExpandCustomerRecipe</recipe>
 		          	</activeRecipes>
 		        </configuration>
 		        
