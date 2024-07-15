@@ -39,29 +39,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 		
 		<!-- openrewrite -->
 		<dependency>
 		    <groupId>org.openrewrite</groupId>
 		    <artifactId>rewrite-java-21</artifactId>
-        	<scope>compile</scope>
-		</dependency>
-		<dependency>
-		    <groupId>org.openrewrite</groupId>
-		    <artifactId>rewrite-maven</artifactId>
-        	<scope>compile</scope>
-		</dependency>
-	    <dependency>
-	        <groupId>org.openrewrite</groupId>
-	        <artifactId>rewrite-xml</artifactId>
-	        <scope>compile</scope>
-	    </dependency>
-		
-		<!-- tests -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 		    <groupId>org.openrewrite</groupId>

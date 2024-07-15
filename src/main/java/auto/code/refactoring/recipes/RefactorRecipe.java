@@ -23,7 +23,7 @@ public class RefactorRecipe extends Recipe {
 
 	@Override
 	public @Description String getDescription() {
-		return "Recipe built for refactoring operations";
+		return "Recipe built for refactoring operations.";
 	}
 	
 	
@@ -63,7 +63,7 @@ public class RefactorRecipe extends Recipe {
 				
 				if(getCursor().getParent().getValue() instanceof J.CompilationUnit cu) {
 					// This might be useful for something
-					cu.getPackageDeclaration().getPackageName();
+					cu.getPackageDeclaration();
 				}
 				
 				return hasHelloWorldMethod || isNotAnApplicableClass || isRecipeClass || isTestClass;

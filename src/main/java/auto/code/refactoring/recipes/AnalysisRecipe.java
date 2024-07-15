@@ -16,7 +16,7 @@ public class AnalysisRecipe extends Recipe {
 
 	@Override
 	public String getDescription() {
-		return "Recipe built for analysis operations";
+		return "Recipe built for analysis operations.";
 	}
 
 	@Override

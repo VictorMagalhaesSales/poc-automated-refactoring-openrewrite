@@ -7,11 +7,11 @@ import org.openrewrite.test.RecipeSpec;
 import org.openrewrite.test.RewriteTest;
 
 
-public class RecipesTest implements RewriteTest {
+public class AnalysisRecipeTest implements RewriteTest {
 	
 	@Override
 	public void defaults(RecipeSpec spec) {
-		spec.recipes(new AnalysisRecipe(), new RefactorRecipe());
+		spec.recipe(new AnalysisRecipe());
 	}
 	
 	@Test
@@ -31,20 +31,6 @@ public class RecipesTest implements RewriteTest {
 					void methodToBeModified(String arg1) {
 						System.out.println("This method will be changed...");
 					}				
-				}
-				
-				
-				public class SecondClass extends org.openrewrite.Recipe {
-
-					@Override
-					public String getDisplayName() {
-						return "Analysis Recipe";
-					}
-				
-					@Override
-					public String getDescription() {
-						return "Recipe built for analysis operations";
-					}			
 				}
 			""")
 		);
