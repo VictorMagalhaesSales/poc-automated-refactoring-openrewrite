@@ -33,9 +33,15 @@ public class ExpandCustomerRecipe extends Recipe {
 					.imports("java.util.Date")
 					.build();
 			
-			private final JavaTemplate methodBodyTemplate =
-				JavaTemplate.builder(" ")
-					.build();
+			private final JavaTemplate methodBodyTemplate = JavaTemplate.builder(" ").build();
+
+			private final JavaTemplate methodStatementsTemplate = JavaTemplate.builder("""
+					this.firstName = firstName;
+					this.lastName = lastName;
+					this.dateOfBirth = dateOfBirth;
+				""")
+				.contextSensitive()
+				.build();
 			
 			@Override
 			public J.MethodDeclaration visitMethodDeclaration(J.MethodDeclaration method, ExecutionContext p) {
@@ -53,9 +59,16 @@ public class ExpandCustomerRecipe extends Recipe {
 						method.getCoordinates().replaceParameters(),
 						method.getParameters().get(0));
 				
-				method = methodBodyTemplate.apply(
+				method = maybeAutoFormat(
+						method,
+						methodBodyTemplate.apply(updateCursor(method), method.getCoordinates().replaceBody()),
+						p);
+				
+				assert method.getBody() != null;
+				
+				method = methodStatementsTemplate.apply(
 						updateCursor(method),
-						method.getCoordinates().replaceBody());
+						method.getBody().getCoordinates().lastStatement());
 				
 				return method;
 			};

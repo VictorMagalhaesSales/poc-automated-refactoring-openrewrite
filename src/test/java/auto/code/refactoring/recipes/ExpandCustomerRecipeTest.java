@@ -15,7 +15,7 @@ public class ExpandCustomerRecipeTest implements RewriteTest {
 	
 	
 	@Test
-	void a() {
+	void shouldExpandCustomerInfoMethod() {
 		rewriteRun(
 			java("""
 				package auto.code.refactoring.classes;
@@ -29,7 +29,25 @@ public class ExpandCustomerRecipeTest implements RewriteTest {
 				
 				    public abstract void setCustomerInfo(String lastName);
 				}
-			""")
+			""",
+			"""
+				package auto.code.refactoring.classes;
+
+				import java.util.Date;
+				
+				public abstract class Customer {
+				    private Date dateOfBirth;
+				    private String firstName;
+				    private String lastName;
+				
+				    public void setCustomerInfo(Date dateOfBirth, String firstName, String lastName) {
+				        this.firstName = firstName;
+				        this.lastName = lastName;
+				        this.dateOfBirth = dateOfBirth;
+				    }
+				}
+			"""
+			)
 		);
 	}
 
