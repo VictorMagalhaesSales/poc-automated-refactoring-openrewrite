@@ -54,7 +54,24 @@
 		    <groupId>org.openrewrite</groupId>
 		    <artifactId>rewrite-test</artifactId>
         	<scope>test</scope>
-		</dependency>
+		</dependency>	
+	    <dependency>
+	        <groupId>org.openrewrite</groupId>
+	        <artifactId>rewrite-templating</artifactId>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.google.errorprone</groupId>
+	        <artifactId>error_prone_core</artifactId>
+	        <version>2.19.1</version>
+	        <scope>provided</scope>
+	        <exclusions>
+	            <exclusion>
+	                <groupId>com.google.auto.service</groupId>
+	                <artifactId>auto-service-annotations</artifactId>
+	            </exclusion>
+	        </exclusions>
+	    </dependency>
+
 	</dependencies>
 	
 	<build>
@@ -78,8 +95,9 @@
 			            <recipe>org.openrewrite.java.spring.search.FindApiCalls</recipe>
 			            <recipe>org.openrewrite.java.spring.search.FindSpringComponents</recipe>-->
 			            
-			           	<recipe>auto.code.refactoring.recipes.AnalysisRecipe</recipe>
-			           	<recipe>auto.code.refactoring.recipes.RefactorRecipe</recipe>
+			           	<!-- <recipe>auto.code.refactoring.recipes.AnalysisRecipe</recipe>
+			           	<recipe>auto.code.refactoring.recipes.RefactorRecipe</recipe>-->
+			           	<recipe>auto.code.refactoring.recipes.FastReplacementRecipe</recipe>
 		          	</activeRecipes>
 		        </configuration>
 		        
