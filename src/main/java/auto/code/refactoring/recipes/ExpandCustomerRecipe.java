@@ -29,7 +29,7 @@ public class ExpandCustomerRecipe extends Recipe {
 					new MethodMatcher("auto.code.refactoring.classes.Customer setCustomerInfo(String lastName)");
 			
 			private final JavaTemplate methodParamsTemplate = 
-				JavaTemplate.builder("Date dateOfBirth, String firstName, #{}")
+				JavaTemplate.builder("Date birthday, String firstName, #{}")
 					.imports("java.util.Date")
 					.build();
 			
@@ -38,7 +38,7 @@ public class ExpandCustomerRecipe extends Recipe {
 			private final JavaTemplate methodStatementsTemplate = JavaTemplate.builder("""
 					this.firstName = firstName;
 					this.lastName = lastName;
-					this.dateOfBirth = dateOfBirth;
+					this.birthday = birthday;
 				""")
 				.contextSensitive()
 				.build();
@@ -70,7 +70,7 @@ public class ExpandCustomerRecipe extends Recipe {
 						updateCursor(method),
 						method.getBody().getCoordinates().lastStatement());
 				
-				return method;
+				return visitMethodDeclaration(method, p);
 			};
 		};
 	}

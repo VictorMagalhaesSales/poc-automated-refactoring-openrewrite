@@ -40,9 +40,9 @@ public class RefactorRecipe extends Recipe {
 						.build();
 				
 				Cursor cursor = new Cursor(getCursor(), classDecl.getBody());
-				JavaCoordinates coordinates = classDecl.getBody().getCoordinates().lastStatement();
+				JavaCoordinates lastStatementCoordinates = classDecl.getBody().getCoordinates().lastStatement();
 				
-				classDecl = classDecl.withBody(methodTemplate.apply(cursor, coordinates, new Object[0]));
+				classDecl = classDecl.withBody(methodTemplate.apply(cursor, lastStatementCoordinates));
 				
 				return super.visitClassDeclaration(classDecl, p);
 			}
@@ -52,7 +52,7 @@ public class RefactorRecipe extends Recipe {
 						.filter(stmt -> stmt instanceof J.MethodDeclaration)
 						.map(J.MethodDeclaration.class::cast)
 						.anyMatch(method -> method.getSimpleName().equals("helloWorld"));
-				boolean isNotAnApplicableClass = classDecl.getSimpleName().equals("Application");
+				boolean isAnApplicationStartClass = classDecl.getSimpleName().equals("Application");
 				boolean isRecipeClass = classDecl.getExtends() != null 
 									&& classDecl.getExtends().getType()
 										.isAssignableFrom(Pattern.compile("org.openrewrite.Recipe"));
@@ -66,13 +66,16 @@ public class RefactorRecipe extends Recipe {
 					cu.getPackageDeclaration();
 				}
 				
-				return hasHelloWorldMethod || isNotAnApplicableClass || isRecipeClass || isTestClass;
+				return hasHelloWorldMethod || isAnApplicationStartClass || isRecipeClass || isTestClass;
 			}
 			
 			@Override
 			public J.MethodDeclaration visitMethodDeclaration(J.MethodDeclaration method, ExecutionContext p) {
 				if(method.getSimpleName().equals("methodToBeModified"))
-					return method.withName(method.getName().withSimpleName("modifiedMethod"));
+					return visitMethodDeclaration(
+						method.withName(method.getName().withSimpleName("modifiedMethod")),
+						p
+					);
 				
 				return super.visitMethodDeclaration(method, p);
 			};

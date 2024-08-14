@@ -3,7 +3,7 @@ package auto.code.refactoring.classes;
 import java.util.Date;
 
 public abstract class Customer {
-    private Date dateOfBirth;
+    private Date birthday;
     private String firstName;
     private String lastName;
 
