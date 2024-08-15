@@ -97,8 +97,9 @@
 			            
 			           	<!-- <recipe>auto.code.refactoring.recipes.AnalysisRecipe</recipe>
 			           	<recipe>auto.code.refactoring.recipes.RefactorRecipe</recipe>
-			           	<recipe>auto.code.refactoring.recipes.FastReplacementRecipe</recipe>-->
-			           	<recipe>auto.code.refactoring.recipes.ExpandCustomerRecipe</recipe>
+			           	<recipe>auto.code.refactoring.recipes.FastReplacementRecipe</recipe>
+			           	<recipe>auto.code.refactoring.recipes.ExpandCustomerRecipe</recipe>-->
+			           	<recipe>auto.code.refactoring.recipes.NewClassScannerRecipe</recipe>
 		          	</activeRecipes>
 		        </configuration>
 		        
